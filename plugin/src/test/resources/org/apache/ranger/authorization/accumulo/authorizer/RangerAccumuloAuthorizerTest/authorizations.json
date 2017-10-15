@@ -1,0 +1,333 @@
+{
+  "serviceName": "test_accumulo",
+  "serviceId": 3,
+  "policyVersion": 4,
+  "policyUpdateTime": "20170923-11:34:33.000-+0000",
+  "policies": [
+    {
+      "service": "test_accumulo",
+      "name": "Authorization Policy",
+      "policyType": 0,
+      "description": "Policy for testing authorizations",
+      "isAuditEnabled": true,
+      "resources": {
+        "authorization": {
+          "values": [
+            "bar","what"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "AUTH",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "joe"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": true
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 1,
+      "isEnabled": true,
+      "version": 1
+    },
+    {
+      "service": "test_accumulo",
+      "name": "Authorization Policy 2",
+      "policyType": 0,
+      "description": "Second Policy for testing authorizations",
+      "isAuditEnabled": true,
+      "resources": {
+        "authorization": {
+          "values": [
+            "foo"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "AUTH",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "joe","frank"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": true
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 2,
+      "isEnabled": true,
+      "version": 1
+    }
+
+  ],
+  "serviceDef": {
+    "name": "accumulo",
+    "implClass": "org.apache.ranger.services.accumulo.RangerServiceAccumulo",
+    "label": "Accumulo",
+    "description": "Accumulo",
+    "options": {
+      "enableDenyAndExceptionsInPolicies": "false"
+    },
+    "configs": [
+    ],
+    "resources": [
+      {
+        "itemId": 1,
+        "name": "system",
+        "type": "string",
+        "level": 10,
+        "mandatory": true,
+        "lookupSupported": true,
+        "recursiveSupported": false,
+        "excludesSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": "true",
+          "ignoreCase": "false"
+        },
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "System",
+        "description": "System"
+      },
+      {
+        "itemId": 2,
+        "name": "table",
+        "type": "string",
+        "level": 10,
+        "mandatory": true,
+        "lookupSupported": true,
+        "recursiveSupported": false,
+        "excludesSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": "true",
+          "ignoreCase": "false"
+        },
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Table",
+        "description": "Table"
+      },
+      {
+        "itemId": 3,
+        "name": "namespace",
+        "type": "string",
+        "level": 10,
+        "mandatory": true,
+        "lookupSupported": true,
+        "recursiveSupported": false,
+        "excludesSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": "true",
+          "ignoreCase": "false"
+        },
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Namespace",
+        "description": "Namespace"
+      },
+      {
+        "itemId": 4,
+        "name": "authorization",
+        "type": "string",
+        "level": 10,
+        "mandatory": true,
+        "lookupSupported": false,
+        "recursiveSupported": false,
+        "excludesSupported": false,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": "false",
+          "ignoreCase": "false"
+        },
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Authorizations",
+        "description": "Authorizations"
+      }
+    ],
+    "accessTypes": [
+      {
+        "itemId": 1,
+        "name": "GRANT",
+        "label": "Grant",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 2,
+        "name": "CREATE_TABLE",
+        "label": "Create Table",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 3,
+        "name": "DROP_TABLE",
+        "label": "Drop Table",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 4,
+        "name": "ALTER_TABLE",
+        "label": "Alter Table",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 5,
+        "name": "CREATE_USER",
+        "label": "Create User",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 6,
+        "name": "DROP_USER",
+        "label": "Drop User",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 7,
+        "name": "ALTER_USER",
+        "label": "Alter User",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 8,
+        "name": "SYSTEM",
+        "label": "System",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 9,
+        "name": "CREATE_NAMESPACE",
+        "label": "Create Namespace",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 10,
+        "name": "DROP_NAMESPACE",
+        "label": "Drop Namespace",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 11,
+        "name": "ALTER_NAMESPACE",
+        "label": "Alter Namespace",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 12,
+        "name": "OBTAIN_DELEGATION_TOKEN",
+        "label": "Obtain Delegation Token",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 13,
+        "name": "READ",
+        "label": "Read Table",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 14,
+        "name": "WRITE",
+        "label": "Write to Table",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 15,
+        "name": "BULK_IMPORT",
+        "label": "Bulk Import to Table",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 16,
+        "name": "AUTH",
+        "label": "Authorization access",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 17,
+        "name": "all",
+        "label": "All",
+        "impliedGrants": [
+		"GRANT",
+		"CREATE_TABLE",
+		"DROP_TABLE",
+		"ALTER_TABLE",
+		"CREATE_USER",
+		"DROP_USER",
+		"ALTER_USER",
+		"SYSTEM",
+		"CREATE_NAMESPACE",
+		"DROP_NAMESPACE",
+		"ALTER_NAMESPACE",
+		"OBTAIN_DELEGATION_TOKEN",
+                "READ",
+                "WRITE",
+                "BULK_IMPORT"
+	]
+      }
+    ],
+    "policyConditions": [
+      {
+        "itemId": 1,
+        "name": "ip-range",
+        "evaluator": "org.apache.ranger.plugin.conditionevaluator.RangerIpMatcher",
+        "evaluatorOptions": {},
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "IP Address Range",
+        "description": "IP Address Range"
+      }
+    ],
+    "contextEnrichers": [],
+    "enums": [],
+    "dataMaskDef": {
+      "maskTypes": [],
+      "accessTypes": [],
+      "resources": []
+    },
+    "rowFilterDef": {
+      "accessTypes": [],
+      "resources": []
+    },
+    "id": 5,
+    "guid": "84b481b5-f23b-4f71-b8b6-ab33977149ca",
+    "isEnabled": true,
+    "createTime": "20170728-13:58:31.000-+0000",
+    "updateTime": "20170728-13:58:31.000-+0000",
+    "version": 1
+  },
+  "auditMode": "audit-default"
+}
