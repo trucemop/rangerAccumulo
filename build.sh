@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#git clone https://github.com/trucemop/docker-kerberos.git
-#git clone https://github.com/trucemop/docker-hdp.git
+git clone https://github.com/trucemop/docker-kerberos.git
+git clone https://github.com/trucemop/docker-hdp.git
 
 cp docker-hdp/.env .
 
