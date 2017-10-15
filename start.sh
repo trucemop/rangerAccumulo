@@ -16,14 +16,31 @@ STATUS=""
 while [ "${STATUS}" != "STARTED" ];do 
 	echo Waiting to add policies...
 	sleep 5
-	STATUS=`curl -k -u admin:admin -H "X-Requested-By:ambari" -s -X GET "http://localhost:8080/api/v1/clusters/dev/hosts/dn0.dev/host_components/NAMENODE" | grep "\"state\"" | cut -d'"' -f4`
+	STATUS=`curl -k -u admin:admin -H "X-Requested-By:ambari" -s -X GET "http://localhost:8080/api/v1/clusters/dev/hosts/dn0.dev/host_components/RANGER_ADMIN" | grep "\"state\"" | cut -d'"' -f4`
 done
+
+echo Adding users...
+docker exec -it compose_dn0.dev_1 /root/addUsers.sh
 
 cd docker-hdp/containers/node/scripts
 
-echo Init ranger accumulo policies
+echo Init ranger accumulo policies...
 ./addServiceType.sh
 ./addService.sh
 ./cleanPolicies.sh
 ./addPolicies.sh
+
+cd -
+
+STATUS=""
+while [ "${STATUS}" != "STARTED" ];do
+        echo Waiting to insert test table...
+        sleep 5
+        STATUS=`curl -k -u admin:admin -H "X-Requested-By:ambari" -s -X GET "http://localhost:8080/api/v1/clusters/dev/hosts/dn0.dev/host_components/ACCUMULO_TRACER" | grep "\"state\"" | cut -d'"' -f4`
+done
+
+echo Creating sample table...
+docker cp statements compose_dn0.dev_1:/root/
+docker cp insert.sh compose_dn0.dev_1:/root/
+docker exec -u root -it compose_dn0.dev_1 sh -c '/root/insert.sh'
 

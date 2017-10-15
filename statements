@@ -1,0 +1,13 @@
+droptable -f -t  office.patient
+createnamespace office
+createtable office.patient
+table office.patient
+insert 1 name "" "Joe Smith"
+insert 1 ssn "" "111-222-3333" -l pii
+insert 1 ssn "" "xxx-xxx-xxxx" -l maskedpii
+insert 1 bloodtype a "" -l phi
+insert 1 bloodtype x "" -l maskedphi
+insert 2 name "" "Jane Doe"
+insert 2 ssn "" 333-666-9999 -l pii
+insert 2 ssn "" xxx-xxx-xxxx -l maskedpii
+insert 3 name "" "Mary Sue"
