@@ -13,10 +13,10 @@ echo Submitting blueprint
 
 
 STATUS=""
-while [ "${STATUS}" != "STARTING" ];do 
+while [ "${STATUS}" != "STARTED" ];do 
 	echo Waiting to add policies...
 	sleep 5
-	STATUS=`curl -k -u admin:admin -H "X-Requested-By:ambari" -s -X GET "http://localhost:8080/api/v1/clusters/dev/hosts/dn0.dev/host_components/ACCUMULO_TRACER" | grep "\"state\"" | cut -d'"' -f4`
+	STATUS=`curl -k -u admin:admin -H "X-Requested-By:ambari" -s -X GET "http://localhost:8080/api/v1/clusters/dev/hosts/dn0.dev/host_components/NAMENODE" | grep "\"state\"" | cut -d'"' -f4`
 done
 
 cd docker-hdp/containers/node/scripts
