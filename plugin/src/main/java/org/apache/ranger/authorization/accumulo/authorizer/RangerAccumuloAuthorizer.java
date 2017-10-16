@@ -122,7 +122,11 @@ public class RangerAccumuloAuthorizer extends KerberosAuthorizor {
                 }
             }
         }
-        logger.info("getCachedUserAuthorizations for user: " + name + " with groups: " + groups);
+        List<String> authStringList = new ArrayList<>();
+        for (byte[] auth : authorizationList) {
+            authStringList.add(new String(auth, Charsets.UTF_8));
+        }
+        logger.info("getCachedUserAuthorizations for user: " + name + " with groups: " + groups + " was: " + authStringList.toString());
         if (authorizationList.size() > 0) {
             authorizations = new Authorizations(authorizationList);
         }

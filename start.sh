@@ -32,12 +32,15 @@ echo Init ranger accumulo policies...
 
 cd -
 
+
 STATUS=""
 while [ "${STATUS}" != "STARTED" ];do
         echo Waiting to insert test table...
         sleep 5
         STATUS=`curl -k -u admin:admin -H "X-Requested-By:ambari" -s -X GET "http://localhost:8080/api/v1/clusters/dev/hosts/dn0.dev/host_components/ACCUMULO_TRACER" | grep "\"state\"" | cut -d'"' -f4`
 done
+
+sleep 5
 
 echo Creating sample table...
 docker cp statements compose_dn0.dev_1:/root/
