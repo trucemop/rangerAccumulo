@@ -162,7 +162,6 @@ public class RangerAccumuloPermissionHandler implements PermissionHandler {
         Set<String> groupSet = rau.getGroupNames(ugi);
         String groups = groupSet.toString();
 
-        logger.info("hasTablePermission for user: " + name + " with groups: " + groups + " on table: " + table + " with permission: " + permission.toString());
         boolean isAllowed = false;
         String tableName = table;
         String namespaceName = null;
@@ -192,6 +191,7 @@ public class RangerAccumuloPermissionHandler implements PermissionHandler {
             }
 
         }
+        logger.info("hasTablePermission for user: " + name + " with groups: " + groups + " on table: " + namespacePrefix + tableName + " with permission: " + permission.toString());
 
         RangerAccessResourceImpl resource = new RangerAccessResourceImpl();
         resource.setValue(RESOURCE_KEY_TABLE, namespacePrefix + tableName);
@@ -242,7 +242,6 @@ public class RangerAccumuloPermissionHandler implements PermissionHandler {
         Set<String> groupSet = rau.getGroupNames(ugi);
         String groups = groupSet.toString();
 
-        logger.info("hasNamespacePermission for user: " + user + " with groups: " + groups + " on namespace: " + namespace + " with permission: " + permission.toString());
         boolean isAllowed = false;
 
         String namespaceName = namespace;
@@ -264,6 +263,8 @@ public class RangerAccumuloPermissionHandler implements PermissionHandler {
                 namespaceName = new String(namespaceBytes, Charsets.UTF_8);
             }
         }
+        logger.info("hasNamespacePermission for user: " + user + " with groups: " + groups + " on namespace: " + namespaceName + " with permission: " + permission.toString());
+
         resource.setValue(RESOURCE_KEY_NAMESPACE, namespaceName);
         resource.setOwnerUser(user);
         request.setResource(resource);

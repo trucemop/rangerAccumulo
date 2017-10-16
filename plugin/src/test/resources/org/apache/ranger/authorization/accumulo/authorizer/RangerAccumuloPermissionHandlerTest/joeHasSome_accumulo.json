@@ -84,6 +84,47 @@
       "isEnabled": true,
       "version": 1
     }
+,
+    {
+      "service": "test_accumulo",
+      "name": "table policy2",
+      "policyType": 0,
+      "description": "Policy for testing namespaces",
+      "isAuditEnabled": true,
+      "resources": {
+        "table": {
+          "values": [
+            "test.nstable"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "READ",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "joe"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": true
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 5,
+      "isEnabled": true,
+      "version": 1
+    }
   ],
   "serviceDef": {
     "name": "accumulo",
