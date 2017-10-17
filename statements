@@ -11,3 +11,4 @@ insert 2 name "" "Jane Doe"
 insert 2 ssn "" 333-666-9999 -l pii
 insert 2 ssn "" xxx-xxx-xxxx -l maskedpii
 insert 3 name "" "Mary Sue"
+exit
