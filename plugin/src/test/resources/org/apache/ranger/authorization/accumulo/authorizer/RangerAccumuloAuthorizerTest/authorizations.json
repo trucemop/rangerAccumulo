@@ -83,6 +83,46 @@
       "id": 2,
       "isEnabled": true,
       "version": 1
+    },
+    {
+      "service": "test_accumulo",
+      "name": "Authorization Policy 3",
+      "policyType": 0,
+      "description": "Third Policy for testing authorizations",
+      "isAuditEnabled": true,
+      "resources": {
+        "authorization": {
+          "values": [
+            "okay"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "all",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "frank"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": true
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 3,
+      "isEnabled": true,
+      "version": 1
     }
 
   ],
@@ -294,7 +334,8 @@
 		"OBTAIN_DELEGATION_TOKEN",
                 "READ",
                 "WRITE",
-                "BULK_IMPORT"
+                "BULK_IMPORT",
+                "AUTH"
 	]
       }
     ],

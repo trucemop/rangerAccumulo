@@ -80,7 +80,7 @@ public class RangerAccumuloAuthorizerTest {
         Authorizations authzs = new Authorizations("foo", "bar", "what");
         RangerAccumuloAuthorizer.accumuloPlugin.setPolicies(authorizations);
         assertEquals("Should be equal", authzs, basicRaa.getCachedUserAuthorizations("joe"));
-        authzs = new Authorizations("foo");
+        authzs = new Authorizations("okay", "foo");
         assertEquals("Should be equal", authzs, basicRaa.getCachedUserAuthorizations("frank"));
     }
 

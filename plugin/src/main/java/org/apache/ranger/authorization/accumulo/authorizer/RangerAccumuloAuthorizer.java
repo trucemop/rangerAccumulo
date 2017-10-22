@@ -56,6 +56,7 @@ public class RangerAccumuloAuthorizer extends KerberosAuthorizor {
     protected static volatile RangerAccumuloPlugin accumuloPlugin = null;
 
     public static final String RESOURCE_KEY_AUTHORIZATION = "authorization";
+    public static final String RESOURCE_KEY_ALL = "all";
 
     public static final String ACCESS_TYPE = "AUTH";
 
@@ -100,7 +101,7 @@ public class RangerAccumuloAuthorizer extends KerberosAuthorizor {
                 for (RangerPolicy.RangerPolicyItem policyItem : policy.getPolicyItems()) {
                     if (policyItem.getUsers().contains(user)) {
                         for (Map.Entry<String, RangerPolicy.RangerPolicyResource> resource : policy.getResources().entrySet()) {
-                            if (resource.getKey().equals(RESOURCE_KEY_AUTHORIZATION)) {
+                            if (resource.getKey().equals(RESOURCE_KEY_AUTHORIZATION) || resource.getKey().equals(RESOURCE_KEY_ALL)) {
                                 for (String value : resource.getValue().getValues()) {
                                     authorizationList.add(value.getBytes());
                                 }
@@ -110,7 +111,7 @@ public class RangerAccumuloAuthorizer extends KerberosAuthorizor {
                         for (String group : groupSet) {
                             if (policyItem.getGroups().contains(group)) {
                                 for (Map.Entry<String, RangerPolicy.RangerPolicyResource> resource : policy.getResources().entrySet()) {
-                                    if (resource.getKey().equals(RESOURCE_KEY_AUTHORIZATION)) {
+                                    if (resource.getKey().equals(RESOURCE_KEY_AUTHORIZATION) || resource.getKey().equals(RESOURCE_KEY_ALL)) {
                                         for (String value : resource.getValue().getValues()) {
                                             authorizationList.add(value.getBytes());
                                         }
