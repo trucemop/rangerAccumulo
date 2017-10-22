@@ -94,12 +94,12 @@ public class RangerAccumuloAuthorizer extends KerberosAuthorizor {
 
         Authorizations authorizations = Authorizations.EMPTY;
         List<byte[]> authorizationList = new ArrayList<>();
-        List<RangerPolicy> policyList = accumuloPlugin.getPolicyEngine().getAllowedPolicies(user, groupSet, ACCESS_TYPE);
+        List<RangerPolicy> policyList = accumuloPlugin.getPolicyEngine().getAllowedPolicies(name, groupSet, ACCESS_TYPE);
 
         for (RangerPolicy policy : policyList) {
             if (policy.getIsEnabled()) {
                 for (RangerPolicy.RangerPolicyItem policyItem : policy.getPolicyItems()) {
-                    if (policyItem.getUsers().contains(user)) {
+                    if (policyItem.getUsers().contains(name)) {
                         for (Map.Entry<String, RangerPolicy.RangerPolicyResource> resource : policy.getResources().entrySet()) {
                             if (resource.getKey().equals(RESOURCE_KEY_AUTHORIZATION) || resource.getKey().equals(RESOURCE_KEY_ALL)) {
                                 for (String value : resource.getValue().getValues()) {
