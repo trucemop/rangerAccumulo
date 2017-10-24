@@ -16,6 +16,7 @@ to get to Ambari
 user: admin
 pw:   admin
 
+
 When it's all finished, can hit:
 http://localhost:6080
 
@@ -41,3 +42,4 @@ This also works for tom, jane, and accumulo
 
 
 
+If deploy fails on Accumulo master starting, go to Ambari, click on Actions->Restart All Required.  Wait for that to finish then click Actions->Start All.  There is a config modification timing issue with the all in one deployment that needs to be fixed.
