@@ -2,6 +2,7 @@
 
 git clone https://github.com/trucemop/docker-kerberos.git
 git clone https://github.com/trucemop/docker-hdp.git
+git clone https://github.com/trucemop/docker-nifi.git
 
 cp docker-hdp/.env .
 
