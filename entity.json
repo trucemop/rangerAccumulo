@@ -1,0 +1,33 @@
+{  
+   "message":{  
+      "entities":[  
+         {  
+            "id":{  
+               "id":"-1467290565135246000",
+               "jsonClass":"org.apache.atlas.typesystem.json.InstanceSerialization$_Id",
+               "state":"ACTIVE",
+               "typeName":"Process",
+               "version":0
+            },
+            "jsonClass":"org.apache.atlas.typesystem.json.InstanceSerialization$_Reference",
+            "traitNames":[  
+
+            ],
+            "traits":{  
+
+            },
+            "typeName":"hbase_table",
+            "values":{  
+               "qualifiedName":"plsqn",
+               "uri":"plsuri",
+               "name":"plsname"
+            }
+         }
+      ],
+      "type":"ENTITY_CREATE",
+      "user":"admin"
+   },
+   "version":{  
+      "version":"1.0.0"
+   }
+}
